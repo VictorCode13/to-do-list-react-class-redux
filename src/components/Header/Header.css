@@ -1,0 +1,12 @@
+.header {
+    height: 40px;
+    background-color: black;
+    margin: auto;
+    display: flex;
+    color: white;
+    width: 100%;
+}
+
+.header p {
+    margin: auto;
+}

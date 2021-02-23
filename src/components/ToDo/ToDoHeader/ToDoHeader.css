@@ -1,0 +1,52 @@
+
+.toDoHeaderWrapper {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    justify-content: space-between;
+    margin: 5px 0 10px 0;
+}
+
+.toDoHeaderWrapper p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.toDoHeadreSign {
+    display: flex;
+    flex-direction: column;
+    height: 35px;
+    justify-content: space-between;
+    margin-right: 25%;
+}
+
+.toDoHeadreSignFirst {
+    position: relative;
+}
+
+.toDoHeadreSignSecond {
+    position: relative;
+}
+
+
+.toDoHeadreSignFirst:before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background-color: lightgreen;
+    position: absolute;
+    right: 135px;
+    top: 3px;
+}
+
+.toDoHeadreSignSecond:before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background-color: lightgray;
+    position: absolute;
+    right: 135px;
+    top: 3px;
+}

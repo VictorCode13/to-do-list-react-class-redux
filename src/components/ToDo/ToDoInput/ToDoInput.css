@@ -1,0 +1,28 @@
+.list-group-item {
+    padding: .25rem .75rem;
+    margin-bottom: 2px;
+}
+
+.input-group>.form-control:first-child {
+    flex: 0.5
+}
+
+.input-group button {
+    width: 60px;
+}
+
+.input-group {
+    margin-bottom: 5px;
+}
+
+.input-filter {
+    margin-bottom: 10px;
+}
+
+.input-filter button:first-child {
+    margin-left: 50px;
+}
+
+.input-filter button:last-child {
+    margin-left: 30%;
+}
