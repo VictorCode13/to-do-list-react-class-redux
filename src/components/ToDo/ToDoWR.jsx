@@ -8,17 +8,16 @@ export default class ToDo extends Component {
     
     render() {
 
-        const {toDoData, clearList, deleteCurrentTask, toggleCurrentTask} = this.props;
+        const {toDoData, onDeleted, onToggleDone, onAddTask, onClearList, onFilterDate, onFilterDescription} = this.props;
 
         const toDoItems = toDoData.map( item => {
             const {id, ...itemsProps} = item;
 
             return (
                 <li className="list-group-item " key={id}>
-                    <ToDoItem {...itemsProps}
-                    onDeleted={()=>deleteCurrentTask(id)}
-                    onToggleDone={()=>toggleCurrentTask(id)}
-                    />
+                    <ToDoItem {...itemsProps} 
+                    onDeleted={() => onDeleted(id)}
+                    onToggleDone={() => onToggleDone(id)}/>
                 </li>
             )
         }
@@ -26,8 +25,8 @@ export default class ToDo extends Component {
 
         return (
             <div className ="toDoWrapper">
-                <ToDoHeader clearList={clearList}/>
-                <ToDoInput />
+                <ToDoHeader onClearList={onClearList}/>
+                <ToDoInput onAddTask = {onAddTask} onFilterDate={onFilterDate} onFilterDescription={onFilterDescription}/>
                 <ul className="list-group">
                     {toDoItems}
                 </ul>
