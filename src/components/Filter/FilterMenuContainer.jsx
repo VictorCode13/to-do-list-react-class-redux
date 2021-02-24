@@ -2,7 +2,7 @@ import './Filter.css';
 import FilterMenu from './FilterMenu';
 import { connect } from 'react-redux';
 import {addDateFirst, addDateSecond, addTextFilter} from '../Redux/filter-reducer';
-import {filterToDoDataByFilterMenu} from '../Redux/todo-reducer';
+import {filterToDoData} from '../Redux/todo-reducer';
 
 const mapStateToProps = (state) => ({
     dateFirst: state.filterMenu.dateFirst,
@@ -12,4 +12,4 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, {addDateFirst, addDateSecond, addTextFilter, filterToDoDataByFilterMenu})(FilterMenu)
+export default connect(mapStateToProps, {addDateFirst, addDateSecond, addTextFilter, filterToDoData})(FilterMenu)

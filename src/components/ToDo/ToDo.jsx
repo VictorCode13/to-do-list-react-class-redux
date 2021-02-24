@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './ToDo.css';
 import ToDoHeader from './ToDoHeader/ToDoHeader';
-import ToDoInput from './ToDoInput/ToDoInput';
+import ToDoInputContainer from './ToDoInput/ToDoInputContainer';
 import ToDoItem from './ToDoItem/ToDoItem';
 
 export default class ToDo extends Component {
     
     render() {
 
-        const {toDoData, clearList, deleteCurrentTask, toggleCurrentTask} = this.props;
+        const {toDoData, clearList, deleteCurrentTask, toggleCurrentTask, addToDoText, addToDoDate, addTask} = this.props;
 
         const toDoItems = toDoData.map( item => {
             const {id, ...itemsProps} = item;
@@ -27,7 +27,7 @@ export default class ToDo extends Component {
         return (
             <div className ="toDoWrapper">
                 <ToDoHeader clearList={clearList}/>
-                <ToDoInput />
+                <ToDoInputContainer />
                 <ul className="list-group">
                     {toDoItems}
                 </ul>

@@ -52,7 +52,7 @@ export default class FilterMenu extends Component {
               })
           })
       
-          this.props.filterToDoDataByFilterMenu(newArr);
+          this.props.filterToDoData(newArr);
       }
 
     render() {
