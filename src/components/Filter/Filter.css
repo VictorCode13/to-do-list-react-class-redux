@@ -12,6 +12,15 @@
     align-items: center;
 }
 
+.headerWarpper {
+    display: flex;
+    margin: 0 0 3px 0;
+}
+
+.headerWarpper .nameFilrer {
+    margin-right: 20px;
+}
+
 .filterWrapper .input-group {
     border-radius: 0;
     font-size: 14px;

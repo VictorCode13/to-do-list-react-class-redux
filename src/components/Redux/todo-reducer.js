@@ -1,21 +1,22 @@
 const FILTER_TODODATA = 'FILTER_TODODATA';
+const GLOBAL_FILTER_TODODATA = 'GLOBAL_FILTER_TODODATA';
 const CLEAR_TO_DO_LIST = 'CLEAR_TO_DO_LIST';
 const DELETE_CURRENT_TASK = 'DELETE_CURRENT_TASK';
 const TOGGLE_CURRENT_TASK = 'TOGGLE_CURRENT_TASK';
 const ADD_TO_DO_TEXT = 'ADD_TO_DO_TEXT';
 const ADD_TO_DO_DATE = 'ADD_TO_DO_DATE';
 const ADD_TASK = 'ADD_TASK';
+const CLEAR_FILTER = 'CLEAR_FILTER';
 
-let maxId = 100;
+
 
 let initialState = {
-    toDoData: [
-        // {done: false, date:'2021-02-24', description:'вынести мусор бб', id: 100 },
-        // {done: false, date:'2021-02-21', description:'вырвать зуб', id: 101 },
-        // {done: false, date:'2021-02-22', description:'пукнуть бб', id: 102 },
-    ],
+    toDoData: [],
+    filterData: [],
     date: '',
-    description: ''
+    description: '',
+    filter: false,
+    maxId: 100
 };
 
 const todoReducer = (state = initialState, action) => {
@@ -25,9 +26,23 @@ const todoReducer = (state = initialState, action) => {
                 ...state, toDoData: action.newToDoData
             }
         }
+        case GLOBAL_FILTER_TODODATA: {
+            return {
+                ...state, filterData: action.newToDoData, filter: true
+            }
+        }
         case CLEAR_TO_DO_LIST: {
             return {
-                ...state, toDoData: []
+                ...state, toDoData: [],
+                filterData: [],
+                filter: false
+            }
+        }
+        case CLEAR_FILTER: {
+            return {
+                ...state, 
+                filterData: [],
+                filter: false
             }
         }
         case DELETE_CURRENT_TASK: {
@@ -61,7 +76,7 @@ const todoReducer = (state = initialState, action) => {
                 done: false,
                 date: action.date,
                 description: action.description,
-                id: maxId++
+                id: ++state.maxId
             }
             return {
                 ...state, toDoData: [...state.toDoData, task],
@@ -75,7 +90,9 @@ const todoReducer = (state = initialState, action) => {
 }
 
 export const filterToDoData = (newToDoData) => ({type: FILTER_TODODATA, newToDoData});
+export const globalFilterToDoData = (newToDoData) => ({type: GLOBAL_FILTER_TODODATA, newToDoData});
 export const clearList = () => ({type: CLEAR_TO_DO_LIST});
+export const clearFilter = () => ({type: CLEAR_FILTER});
 export const deleteCurrentTask = (taskId) => ({type: DELETE_CURRENT_TASK, taskId});
 export const toggleCurrentTask = (taskId) => ({type: TOGGLE_CURRENT_TASK, taskId});
 export const addToDoText = (textTask) => ({type: ADD_TO_DO_TEXT, textTask});

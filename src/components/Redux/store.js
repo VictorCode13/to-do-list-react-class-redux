@@ -7,8 +7,19 @@ let reducers = combineReducers({
     todoMenu: todoReducer
 })
 
-let store = createStore(reducers);
+const persistedState = localStorage.getItem('todo') 
+                       ? JSON.parse(localStorage.getItem('todo'))
+                       : []
+                       
+let store = createStore(reducers,
+    persistedState
+    );
+
+store.subscribe(()=>{
+    localStorage.setItem('todo', JSON.stringify(store.getState()))
+})
 
 window.store = store;
 
 export default store;
+

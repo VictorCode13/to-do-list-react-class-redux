@@ -21,9 +21,12 @@ export default class FilterMenu extends Component {
         if (this.props.dateFirst && this.props.dateSecond) {
             if(this.props.dateFirst <= this.props.dateSecond) {
                 this.onFilterChange(this.props.dateFirst, this.props.dateSecond, this.props.textFilter, this.props.toDoData);
-                debugger;
             }
         }
+    }
+
+    onClear = () => {
+       this.props.clearFilter()
     }
 
     onFilterChange = (dateFirst, dateSecond, textFilter, toDoData) => {
@@ -52,11 +55,16 @@ export default class FilterMenu extends Component {
               })
           })
       
-          this.props.filterToDoData(newArr);
+          this.props.globalFilterToDoData(newArr);
       }
 
     render() {
         return (
+            <>
+            <div className="headerWarpper" onClick={this.onClear}>
+                    <button className="btn btn-outline-secondary btn-sm"> Clear filter
+                    </button>
+                </div>
             <form className="mb-3 filterWrapper" onSubmit={this.onSubmit}>
                 <span className="nameFilrer">Filter</span>
                 <div className="input-group">
@@ -81,6 +89,7 @@ export default class FilterMenu extends Component {
                 <button className="btn btn-outline-secondary btn-sm"> Show
                 </button>
             </form>
+            </>
         )
         }
     }

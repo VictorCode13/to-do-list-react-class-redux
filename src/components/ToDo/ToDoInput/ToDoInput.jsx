@@ -11,6 +11,8 @@ export default class ToDoInput extends Component {
         this.props.addToDoDate(event.target.value);
     }
 
+    
+    
     onSubmit = (event) => {
         event.preventDefault();
         if (this.props.date && this.props.description) {

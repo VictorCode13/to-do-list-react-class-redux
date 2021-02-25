@@ -6,23 +6,31 @@ import ToDoItem from './ToDoItem/ToDoItem';
 
 export default class ToDo extends Component {
     
+    choose = (arr, filterArr, flag) => {
+        if (filterArr.length === 0 && !flag) {
+            return arr 
+        } else {
+            return filterArr
+        }
+    }
+
     render() {
 
-        const {toDoData, clearList, deleteCurrentTask, toggleCurrentTask, addToDoText, addToDoDate, addTask} = this.props;
-
-        const toDoItems = toDoData.map( item => {
+       
+        const {toDoData, filterData, clearList, deleteCurrentTask, toggleCurrentTask, filter} = this.props;
+        
+        const toDoItems = this.choose(toDoData, filterData, filter).map( item => {     
             const {id, ...itemsProps} = item;
-
             return (
                 <li className="list-group-item " key={id}>
-                    <ToDoItem {...itemsProps}
+                    <ToDoItem 
+                    {...itemsProps} 
                     onDeleted={()=>deleteCurrentTask(id)}
                     onToggleDone={()=>toggleCurrentTask(id)}
                     />
                 </li>
             )
-        }
-    );
+        });
 
         return (
             <div className ="toDoWrapper">
